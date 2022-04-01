@@ -51,7 +51,7 @@ namespace YgoMasterClient
             }
             else
             {
-                success = GameLauncher.Launch(GameLauncherMode.Detours);
+                success = GameLauncher.Launch(GameLauncherMode.StealEntryPoint);
             }
             if (!success)
             {
