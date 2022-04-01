@@ -25,12 +25,12 @@ jobs:
         run: ./Build.bat
 
       # zip Build directory for release
-      - name: Prepare build
-        run: |
-          powershell Compress-Archive Build YgoMaster-staging.zip
+      #- name: Prepare build
+      #  run: |
+      #    powershell Compress-Archive Build YgoMaster-staging.zip
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
           name: Test Build
-          path: YgoMaster-staging.zip
+          path: Build
