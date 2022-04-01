@@ -18,6 +18,8 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
 
       - uses: TheMrMilchmann/setup-mvsc-dev@v1
+        with:
+          arch: x64
 
       - name: Run Build.bat to build YgoMaster
         run: ./Build.bat
