@@ -1,0 +1,33 @@
+name: Build YgoMaster
+
+on:
+  # manual trigger
+  workflow_dispatch:
+
+jobs:
+  build:
+    # use windows env to build
+    runs-on: windows-latest
+
+    steps:
+      # Check out repository
+      - uses: actions/checkout@v3
+
+      # set up msbuild
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+        uses: TheMrMilchmann/setup-mvsc-dev@v1
+
+      - name: Run Build.bat to build YgoMaster
+        run: ./Build.bat
+
+      # zip Build directory for release
+      - name: Prepare build
+        run: |
+          powershell Compress-Archive Build YgoMaster-staging.zip
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Test Build
+          path: YgoMaster-staging.zip
